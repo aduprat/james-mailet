@@ -28,8 +28,10 @@ Just include something like this in your *pom.xml*
 
 ### Write your own mailets
 
-To learn how to write your own mailets please have a look at <a href="#">Generic Matcher</a> and
-<a href="">Generic Mailet</a>.
+To learn how to write your own mailets please have a look at
+<a href="http://svn.apache.org/repos/asf/james/mailet/trunk/base/src/main/java/org/apache/mailet/base/GenericMatcher.java">Generic Matcher</a> and
+<a href="http://svn.apache.org/repos/asf/james/mailet/trunk/base/src/main/java/org/apache/mailet/base/GenericMailet.java">Generic Mailet</a>.
 
-Another good learning source are the unit tests from <a href="#">Standard Mailets</a>
+Another good learning source are the unit tests from
+<a href="http://svn.apache.org/repos/asf/james/mailet/trunk/standard/src/test/java/org/apache/james/mailet/standard/">Standard Mailets</a>
 

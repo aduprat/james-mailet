@@ -12,4 +12,4 @@ Apache JamesProject Team (2012/12/28)
 ##Earlier Releases
 
 For information regarding the **Release notes** of earlier releases, please visit
-<a href="release-note-old.html">Old releases</a> page.
+<a href="release-notes-old.html">Old releases</a> page.
