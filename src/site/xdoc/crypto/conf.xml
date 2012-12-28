@@ -21,11 +21,11 @@
     <properties>
         <title>Configuration</title>
         <author email="server-dev@james.apache.org">
-            JAMES Project Team
+            James Project Team
         </author>
     </properties>
     <body>
-        <section name="JAMES Configuration">
+        <section name="James Configuration">
             <p>
                 To use cryptography mailets, the required
                 <a href='http://www.bouncycastle.org'>Bouncy Castle</a>

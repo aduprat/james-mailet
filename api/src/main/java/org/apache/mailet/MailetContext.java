@@ -20,45 +20,44 @@
 
 package org.apache.mailet;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 
 /**
  * Defines a set of methods that can be used to interact with the mailet
  * container. For example, it can be used to send a new message, to deliver
  * a message locally, or to write to a log file.
- * <p>
+ * <p/>
  * Mailets and Matchers can retrieve a MailetContext through their
  * respective MailetConfig and MatcherConfig objects, which are provided
  * to them by the mailet container when they are initialized.
- * <p>
+ * <p/>
  * <b>Mailet Context Attributes</b>
- * <p>
+ * <p/>
  * The Mailet Context can provide additional configuration or other
  * information not defined in this interface to Mailets and Matchers
  * by using attributes. See your server documentation for information
  * on the attributes it provides.
- * <p>
+ * <p/>
  * Every attribute consists of a name and a value.
  * Attribute names should follow the same convention as package names.
  * The Mailet API specification reserves names matching
  * <i>org.apache.james.*</i> and <i>org.apache.mailet.*</i>.
  * Attribute values can be arbitrary objects.
- * <p>
+ * <p/>
  * The list of attributes which are currently associated with a mailet
  * context can be retrieved using the {@link #getAttributeNames}
  * method, and given its name, the value of an attribute can be
  * retrieved using the {@link #getAttribute} method.
- *
  */
 public interface MailetContext {
-    
+
     /**
      * Loglevel for logging operations
+     *
      * @since Mailet API v2.5
      */
     public static enum LogLevel {
@@ -67,15 +66,16 @@ public interface MailetContext {
         WARN,
         ERROR
     }
-    
+
     /**
      * DNS Record Types for lookup operations
+     *
      * @since Mailet API v2.5
      */
     public enum RecordType {
-    	A, AAAA, PTR, MX, TXT, SPF
+        A, AAAA, PTR, MX, TXT, SPF
     }
-    
+
     /**
      * Returns the major version number of the Mailet API that this mailet
      * container supports. For example, if the mailet container supports
@@ -97,7 +97,7 @@ public interface MailetContext {
     /**
      * Returns the name and version of the mailet container on which
      * the mailet is running.
-     * <p>
+     * <p/>
      * The returned string is of the form {@code <servername>/<versionnumber>},
      * optionally followed by additional information in parentheses. For example,
      * the JAMES mailet container may return the string {@code "JAMES/1.2"}
@@ -110,14 +110,14 @@ public interface MailetContext {
     /**
      * Returns an Iterator over the names of all attributes which are set
      * in this mailet context.
-     * <p>
+     * <p/>
      * The {@link #getAttribute} method can be called to
      * retrieve an attribute's value given its name.
      *
      * @return an Iterator (of Strings) over all attribute names
      */
     Iterator<String> getAttributeNames();
-    
+
     /**
      * Returns the value of the named mailet context attribute,
      * or null if the attribute does not exist.
@@ -126,7 +126,7 @@ public interface MailetContext {
      * @return the attribute value, or null if the attribute does not exist
      */
     Object getAttribute(String name);
-    
+
     /**
      * Binds an object to a given attribute name in this mailet context.  If the name
      * specified is already used for an attribute, this method will remove the old
@@ -138,22 +138,22 @@ public interface MailetContext {
      * @param name - a String specifying the name of the attribute
      * @param object - an Object representing the attribute to be bound
      */
-    
+
     /**
      * Associates an attribute with the given name and value with this mailet context.
-     * <p>
+     * <p/>
      * If an attribute with the given name already exists, it is replaced, and the
      * previous value is returned.
-     * <p>
+     * <p/>
      * Attribute names should follow the same convention as package names.
      * The Mailet API specification reserves names matching
      * <i>org.apache.james.*</i> and <i>org.apache.mailet.*</i>.
      *
-     * @param name the attribute name
+     * @param name  the attribute name
      * @param value the attribute value
      */
     void setAttribute(String name, Object value);
-    
+
     /**
      * Removes the attribute with the given name from this Mail instance.
      *
@@ -178,20 +178,19 @@ public interface MailetContext {
      * is specific to the mailet container.
      *
      * @param message the message to be written to the log
-     * @param t the Throwable whose stack trace is to be written to the log
+     * @param t       the Throwable whose stack trace is to be written to the log
      * @deprecated use {@link #log(LogLevel level, String message, Throwable t)}
      */
     @Deprecated
     void log(String message, Throwable t);
-    
-    
+
+
     /**
      * Writes the specified message to a mailet log. The name and type of
      * the mailet log is specific to the mailet container.
      *
-     * @param level {@link LogLevel} to use
+     * @param level   {@link LogLevel} to use
      * @param message the message to be written to the log
-     * 
      * @since 2.5
      */
     void log(LogLevel level, String message);
@@ -202,20 +201,19 @@ public interface MailetContext {
      * is specific to the mailet container.
      *
      * @param message the message to be written to the log
-     * @param t the Throwable whose stack trace is to be written to the log
-     * @param level {@link LogLevel} to use
-     * 
+     * @param t       the Throwable whose stack trace is to be written to the log
+     * @param level   {@link LogLevel} to use
      * @since 2.5
      */
     void log(LogLevel level, String message, Throwable t);
-    
+
     /**
      * Returns the Postmaster address for this mailet context.
      *
      * @return the Postmaster address
      */
     MailAddress getPostmaster();
-    
+
     /**
      * Checks if a host name is local, i.e. this server is the
      * final delivery destination for messages sent to this host.
@@ -229,18 +227,18 @@ public interface MailetContext {
      * Checks if a user account is local, i.e. the account exists locally
      * and this server is the final delivery destination for messages
      * sent to this address.
-     * <p>
+     * <p/>
      * This given user account string should contain the full
      * user address, i.e. user@domain. If the domain part is
      * missing, "localhost" will be used as the domain name.
      *
      * @param userAccount the full address of the account to be checked
      * @return true if the account is a local account, false otherwise
-     * @deprecated use {@link #isLocalEmail(MailAddress)} instead 
+     * @deprecated use {@link #isLocalEmail(MailAddress)} instead
      */
     @Deprecated
     boolean isLocalUser(String userAccount);
-    
+
     /**
      * Checks if an address is local, i.e. its account exists locally
      * and this server is the final delivery destination for messages
@@ -248,24 +246,22 @@ public interface MailetContext {
      *
      * @param mailAddress the full address of the account to be checked
      * @return true if the account is a local account, false otherwise
-     * 
      * @since Mailet API 2.4
      */
     boolean isLocalEmail(MailAddress mailAddress);
-    
+
     /**
      * Returns the hostnames that are specified as mail handlers for
      * the given domain name. The host names are determined using DNS
      * lookup of MX records and are returned sorted by priority
      * (as detailed in the SMTP RFC).
-     *     
+     *
      * @param domain the domain name whose mail handling hosts are requested
      * @return the sorted mail-handling hostnames for the domain
-     * 
      * @deprecated use the generic dnsLookup method
      */
     Collection<String> getMailServers(String domain);
-    
+
     /**
      * Returns the SMTP host addresses specified as mail handlers for
      * the given domain name. This is equivalent to calling the
@@ -274,11 +270,10 @@ public interface MailetContext {
      * The results are returned as instances of {@link HostAddress}
      * containing the host and address information.
      *
-     * @since Mailet API v2.3
      * @param domain the domain whose mail handling SMTP host addresses are requested
      * @return an Iterator over HostAddress, in proper order of priority, or
      *         an empty iterator if no hosts are found
-     *         
+     * @since Mailet API v2.3
      * @deprecated use the generic dnsLookup method
      */
     Iterator<HostAddress> getSMTPHostAddresses(String domain);
@@ -293,34 +288,34 @@ public interface MailetContext {
      * @throws MessagingException if an error occurs accessing or sending the message
      */
     void sendMail(MimeMessage message)
-        throws MessagingException;
+            throws MessagingException;
 
     /**
      * Sends an outgoing message to the top of this mailet container's root queue.
      * This is functionally equivalent to having opened an SMTP session to the local
      * host and delivering the message using the given sender and recipients.
      *
-     * @param sender the message sender
+     * @param sender     the message sender
      * @param recipients the message recipients as a Collection of MailAddress objects
-     * @param message the message to send
+     * @param message    the message to send
      * @throws MessagingException if an error occurs accessing or sending the message
      */
     void sendMail(MailAddress sender, Collection<MailAddress> recipients, MimeMessage message)
-        throws MessagingException;
+            throws MessagingException;
 
     /**
      * Sends an outgoing message to the top of this mailet container's queue for the
      * specified processor.
      *
-     * @param sender the message sender
+     * @param sender     the message sender
      * @param recipients the message recipients as a Collection of MailAddress objects
-     * @param message the message to send
-     * @param state the state of the message, indicating the name of the processor for
-     *        which the message will be queued
+     * @param message    the message to send
+     * @param state      the state of the message, indicating the name of the processor for
+     *                   which the message will be queued
      * @throws MessagingException if an error occurs accessing or sending the message
      */
     void sendMail(MailAddress sender, Collection<MailAddress> recipients, MimeMessage message, String state)
-        throws MessagingException;
+            throws MessagingException;
 
     /**
      * Sends an outgoing message to the top of this mailet container's root queue.
@@ -332,15 +327,15 @@ public interface MailetContext {
      */
     void sendMail(Mail mail)
             throws MessagingException;
-    
+
     /**
      * Bounces the message using a standard format with the given message.
-     * <p>
-     * The message will be sent to the original sender from the postmaster address 
+     * <p/>
+     * The message will be sent to the original sender from the postmaster address
      * as configured in this mailet context, adding the message to top of mail
      * server queue using {@code sendMail}.
      *
-     * @param mail the message to bounce, with the original sender
+     * @param mail    the message to bounce, with the original sender
      * @param message a descriptive message explaining why the message bounced
      * @throws MessagingException if an error occurs accessing or sending the message
      */
@@ -348,28 +343,27 @@ public interface MailetContext {
 
     /**
      * Bounces the message using a standard format with the given message.
-     * <p>
+     * <p/>
      * The message will be sent to the original sender from the given address,
      * adding the message to top of mail server queue using {@code sendMail}.
      *
-     * @param mail the message to bounce, with the original sender
+     * @param mail    the message to bounce, with the original sender
      * @param message a descriptive message explaining why the message bounced
      * @param bouncer the address used as the sender of the bounce message
      * @throws MessagingException if an error occurs accessing or sending the message
      */
     void bounce(Mail mail, String message, MailAddress bouncer) throws MessagingException;
-    
+
 
     /**
      * Lookups the DNS system for a given record type.
      * In case of MX records the returned List will be sorted using the priority score, ascending.
-     * 
+     *
      * @param name the host/domain name to lookup
-     * @param type the "IN" record type to lookup 
+     * @param type the "IN" record type to lookup
      * @return a String list with result records with at least 1 element.
      * @throws TemporaryLookupException on timeout or servfail
-     * @throws LookupException on host not found, record type not found, name syntax issues and other permanent exceptions.
-     * 
+     * @throws LookupException          on host not found, record type not found, name syntax issues and other permanent exceptions.
      * @since Mailet API v2.5
      */
     List<String> dnsLookup(String name, RecordType type) throws TemporaryLookupException, LookupException;

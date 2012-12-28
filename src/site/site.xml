@@ -20,7 +20,7 @@
 <project name='mailets'>
 
     <bannerLeft>
-        <name>James Project</name>
+        <name>Apache James Project</name>
         <src>images/logos/james-mailets-logo.gif</src>
         <href>http://james.apache.org/index.html</href>
         <alt>james-mailets-logo.gif</alt>
@@ -33,71 +33,17 @@
             <item name="Basic Mailet Toolkit" href="http://james.apache.org/mailet/base"/>
             <item name="Crypto Mailets" href="http://james.apache.org/mailet/crypto"/>
             <item name="MailetDocs" href="http://james.apache.org/mailet/mailetdocs-maven-plugin"/>
-            <item name="Sieve Mailet" href='http://james.apache.org/jsieve/mailet/index.html'/>
+            <item name="Sieve Mailet" href='http://james.apache.org/jsieve/mailet/'/>
             <item name="Standard Mailets" href="http://james.apache.org/mailet/standard"/>
         </menu>
 
         <menu name="Useful Information">
-
+            <item name="Java Docs" href="http://james.apache.org/mailet/apidocs"/>
+            <item name="Quick Start" href="quickstart.html"/>
+            <item name="Release Notes" href="release-notes.html"/>
         </menu>
 
-        <menu ref="reports" />
-
-        <!--<menu name="Standard Mailets">-->
-            <!--<item name="Overview" href="index.html"/>-->
-            <!--<item name="Configuration" href="conf.html"/>-->
-            <!--<item name="Catalog" href="mailet-report.html" />-->
-            <!--<item name="Release Notes" href="release-notes.html" />-->
-            <!--<item-->
-                    <!--name="DOAP"-->
-                    <!--href="doap_apache-standard-mailets.rdf"-->
-                    <!--img='http://www.w3.org/RDF/icons/rdf_metadata_button.32'/>-->
-        <!--</menu>-->
-
-        <!--<menu name="MailetDocs Maven Plugin">-->
-            <!--<item name="Introduction" href="index.html"/>-->
-            <!--<item name="Goals" href="plugin-info.html"/>-->
-            <!--<item name="Usage" href="usage.html"/>-->
-            <!--<item name="Release Notes" href="release-notes.html"/>-->
-            <!--<item-->
-                    <!--name="DOAP"-->
-                    <!--href="doap_maven-mailetdocs-plugin.rdf"-->
-                    <!--img='http://www.w3.org/RDF/icons/rdf_metadata_button.32'/>-->
-        <!--</menu>-->
-        <!--<menu name='Examples'>-->
-            <!--<item name='Large Catalog' href='examples/standard.html'/>-->
-        <!--</menu>-->
-
-
-        <!--<menu name="Cryptography Mailets">-->
-            <!--<item name="Overview" href="index.html"/>-->
-            <!--<item name="Configuration" href="conf.html"/>-->
-            <!--<item name="Catalog" href="mailet-report.html" />-->
-            <!--<item name="Release Notes" href="release-notes.html" />-->
-            <!--<item-->
-                    <!--name="DOAP"-->
-                    <!--href="doap_apache-crypto-mailets.rdf"-->
-                    <!--img='http://www.w3.org/RDF/icons/rdf_metadata_button.32'/>-->
-        <!--</menu>-->
-
-
-        <!--<menu name="Basic Mailet Toolkit">-->
-            <!--<item name="Overview" href="index.html"/>-->
-            <!--<item name="Release Notes" href="release-notes.html"/>-->
-            <!--<item-->
-                    <!--name="DOAP"-->
-                    <!--href="doap_apache-mailet-base.rdf"-->
-                    <!--img='http://www.w3.org/RDF/icons/rdf_metadata_button.32'/>-->
-        <!--</menu>-->
-
-
-        <!--<menu name="Mailet API">-->
-            <!--<item name="Overview" href="index.html"/>-->
-            <!--<item-->
-                    <!--name="DOAP"-->
-                    <!--href="doap_mailet.rdf"-->
-                    <!--img='http://www.w3.org/RDF/icons/rdf_metadata_button.32'/>-->
-        <!--</menu>-->
+        <menu ref="reports"/>
 
     </body>
 

@@ -34,42 +34,8 @@
             <p>
                 The Mailet API is a subproject of<a href='http://james.apache.org'>Apache James</a>.
                 All who are interested in developing the Mailet API and James will be warmly
-                welcomed on the<a href='mail-lists.html'>mailing lists</a>.
+                welcomed on the<a href='/mail-lists.html'>mailing lists</a>.
             </p>
-            <subsection name='Releases'>
-                <p>
-                    <strong>Apache Mailet 2.4</strong>
-                    is the current release and can be downloaded
-                    <a href='http://james.apache.org/download.cgi'>here</a>.
-                </p>
-                <p>
-                    <strong>2.4</strong>
-                    is the first independent release of the API.
-                    Earlier versions were released as part of the
-                    <a href='http://james.apache.org/server/index.html' rel='tag'>Apache James Server</a>
-                    and are versioned accordingly. 2.4 differs from the last version shipped
-                    (with Server<strong>2.3</strong>) only by minor bug fixes and is compatible with it.
-                </p>
-            </subsection>
-            <subsection name='Upgrading From 2.3.1 Server Release'>
-                <p>
-                    A small number of methods were added to the Mailet API version in the
-                    <code>2.3.2</code>
-                    codestream after
-                    <code>2.3.1</code>
-                    but before Mailet API release<code>2.4</code>. If
-                    these methods are used then
-                    <code>apache-mailet-2.4.jar</code>
-                    must be inserted into
-                    the startup classpath before the main server classes.
-                </p>
-                <p>
-                    Some useful development classes bundled with
-                    <code>2.3.1</code>
-                    are now available
-                    as the independent<a href='http://james.apache.org/mailet/base'>Mailet Base Tookit</a>.
-                </p>
-            </subsection>
         </section>
         <section name="Quick Start">
             <subsection name='What Is A Mailet?'>

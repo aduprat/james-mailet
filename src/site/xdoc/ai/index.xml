@@ -24,14 +24,12 @@
     </properties>
     <body>
         <section name="Artificial Intelligence Mailets">
-            <p>Mail processors with artificial intelligence (AI).</p>
-            <subsection name='Releases'>
-                <p>
-                    Previously released in
-                    <a href='/server/index.html'>Apache James Server</a>
-                    2. Apache James AI Mailets 0.1 is expect to be the first independent release of this code.
-                </p>
-            </subsection>
+            <p>Mail processors with artificial intelligence (AI). Their purpose is to use AI algorithms to process
+                emails - things like identify<a href="http://en.wikipedia.org/wiki/Spam_(electronic)">SPAM</a>,
+                <a href="http://en.wikipedia.org/wiki/Phishing">phishing</a>
+                attempts, etc.
+            </p>
+            <p>The code is still young, feel free to join if you are interested.</p>
         </section>
     </body>
 </document>
