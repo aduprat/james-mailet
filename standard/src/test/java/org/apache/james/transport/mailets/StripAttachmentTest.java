@@ -19,22 +19,6 @@
 
 package org.apache.james.transport.mailets;
 
-import org.apache.james.transport.mailets.OnlyText;
-import org.apache.james.transport.mailets.RecoverAttachment;
-import org.apache.james.transport.mailets.StripAttachment;
-import org.apache.mailet.Mail;
-import org.apache.mailet.Mailet;
-import org.apache.mailet.base.test.FakeMail;
-import org.apache.mailet.base.test.FakeMailContext;
-import org.apache.mailet.base.test.FakeMailetConfig;
-import org.junit.Assert;
-import org.junit.Test;
-
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -43,6 +27,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Properties;
+
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.mailet.Mail;
+import org.apache.mailet.Mailet;
+import org.apache.mailet.base.test.FakeMail;
+import org.apache.mailet.base.test.FakeMailContext;
+import org.apache.mailet.base.test.FakeMailetConfig;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class StripAttachmentTest {
 
@@ -94,13 +93,14 @@ public class StripAttachmentTest {
         String name = c.iterator().next();
 
         File f = new File("./" + name);
-        InputStream is = new FileInputStream(f);
-        String savedFile = toString(is);
-        is.close();
-        Assert.assertEquals(body, savedFile);
-
-        f.delete();
-
+        try {
+            InputStream is = new FileInputStream(f);
+            String savedFile = toString(is);
+            is.close();
+            Assert.assertEquals(body, savedFile);
+        } finally {
+            FileUtils.deleteQuietly(f);
+        }
     }
 
     public String toString(final InputStream is) throws IOException {
@@ -168,13 +168,14 @@ public class StripAttachmentTest {
         String name = c.iterator().next();
 
         File f = new File("./" + name);
-        InputStream is = new FileInputStream(f);
-        String savedFile = toString(is);
-        is.close();
-        Assert.assertEquals(body, savedFile);
-
-        f.delete();
-
+        try {
+            InputStream is = new FileInputStream(f);
+            String savedFile = toString(is);
+            is.close();
+            Assert.assertEquals(body, savedFile);
+        } finally {
+            FileUtils.deleteQuietly(f);
+        }
     }
 
     @Test
@@ -234,13 +235,14 @@ public class StripAttachmentTest {
         Assert.assertTrue(name.startsWith("e_Pubblicita_e_vietata_Milano9052"));
 
         File f = new File("./" + name);
-        InputStream is = new FileInputStream(f);
-        String savedFile = toString(is);
-        is.close();
-        Assert.assertEquals(body, savedFile);
-
-        f.delete();
-
+        try {
+            InputStream is = new FileInputStream(f);
+            String savedFile = toString(is);
+            is.close();
+            Assert.assertEquals(body, savedFile);
+        } finally {
+            FileUtils.deleteQuietly(f);
+        }
     }
 
     @Test
